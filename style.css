@@ -83,3 +83,62 @@ button {
 hr {
     margin: 30px 0;
 }
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    .container {
+        margin: 15px;
+        padding: 15px;
+        box-shadow: none;
+    }
+
+    .date-inputs {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .date-inputs input {
+        width: calc(33% - 6px);
+        /* Adjust width for better fit on small screens */
+    }
+
+    .shift-option {
+        /* 在手机上，让这些选项垂直堆叠，但每个选项内部是行布局 */
+        flex-direction: column;
+        gap: 10px;
+        /* 增加选项之间的垂直间距 */
+    }
+
+    .shift-label {
+        /* 使复选框和文本在同一行 */
+        flex-direction: row;
+        align-items: center;
+        /* 垂直居中对齐 */
+        justify-content: flex-start;
+        /* 将内容靠左对齐 */
+        gap: 8px;
+        /* 增加复选框和文本之间的间距 */
+        /* 移除之前设置的宽度，让它自然流动 */
+        width: auto;
+    }
+
+    .shift-label input[type="checkbox"] {
+        /* 确保复选框本身不会有额外的边距影响对齐 */
+        margin-top: 0;
+        margin-bottom: 0;
+        width: auto;
+        /* 让复选框宽度自适应 */
+    }
+
+    button {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+        /* Add some space between stacked buttons */
+    }
+
+    textarea {
+        margin-bottom: 10px;
+        /* Add some space after textareas */
+    }
+}
