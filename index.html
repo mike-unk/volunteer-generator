@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>地铁志愿者信息生成器</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>地铁志愿者QQ群信息生成</h1>
+
+        <p>温馨提示：接龙信息请用手机编辑，然后点“进入接龙表格”。</p>
+
+        <label for="station">地铁站名称：</label>
+        <input type="text" id="station" placeholder="例如：体育西路" />
+
+        <label>服务日期：</label>
+        <div class="date-inputs">
+            <input type="number" id="month" min="1" max="12" placeholder="月" />
+            <span>月</span>
+            <input type="number" id="day" min="1" max="31" placeholder="日" />
+            <span>日</span>
+        </div>
+
+        <label>报名截止时间设置：</label>
+        <div class="date-inputs" style="max-width: 320px;">
+            <input type="number" id="apply-month" min="1" max="12" placeholder="月" />
+            <span>月</span>
+            <input type="number" id="apply-day" min="1" max="31" placeholder="日" />
+            <span>日</span>
+            <input type="text" id="apply-time" placeholder="时间" style="width: 90px; text-align: center;" />
+        </div>
+
+        <label>选择班次：</label>
+        <div class="shift-option">
+            <label class="shift-label">
+                <input type="checkbox" id="shift-morning" onchange="toggleShiftFields('morning')" />早班
+            </label>
+            <label class="shift-label">
+                <input type="checkbox" id="shift-afternoon" onchange="toggleShiftFields('afternoon')" />中班
+            </label>
+            <label class="shift-label">
+                <input type="checkbox" id="shift-evening" onchange="toggleShiftFields('evening')" />晚班
+            </label>
+        </div>
+
+        <div id="shift-morning-fields" class="shift-fields" style="display: none;">
+            <h3>早班设置</h3>
+            <label>时间：</label>
+            <input type="text" id="morning-time" value="8:00-14:00" />
+            <label>人数：</label>
+            <input type="number" id="morning-count" min="0" />
+            <button onclick="generateRoster('morning')">生成接龙</button>
+            <textarea id="roster-morning" readonly></textarea>
+            <button onclick="copyRoster('morning')">复制接龙</button>
+        </div>
+
+        <div id="shift-afternoon-fields" class="shift-fields" style="display: none;">
+            <h3>中班设置</h3>
+            <label>时间：</label>
+            <input type="text" id="afternoon-time" value="14:00-20:00" />
+            <label>人数：</label>
+            <input type="number" id="afternoon-count" min="0" />
+            <button onclick="generateRoster('afternoon')">生成接龙</button>
+            <textarea id="roster-afternoon" readonly></textarea>
+            <button onclick="copyRoster('afternoon')">复制接龙</button>
+        </div>
+
+        <div id="shift-evening-fields" class="shift-fields" style="display: none;">
+            <h3>晚班设置</h3>
+            <label>时间：</label>
+            <input type="text" id="evening-time" value="16:00-21:00" />
+            <label>人数：</label>
+            <input type="number" id="evening-count" min="0" />
+            <button onclick="generateRoster('evening')">生成接龙</button>
+            <textarea id="roster-evening" readonly></textarea>
+            <button onclick="copyRoster('evening')">复制接龙</button>
+        </div>
+
+        <hr />
+
+        <h2>群公告生成</h2>
+        <button onclick="generateAnnouncement()">生成群公告</button>
+        <textarea id="announcement" readonly></textarea>
+        <button onclick="copyAnnouncement()">复制群公告</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
